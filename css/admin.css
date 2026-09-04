@@ -1,1 +1,30 @@
+* {
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+input,
+button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#mensajeLogin {
+    margin-top: 15px;
+}
