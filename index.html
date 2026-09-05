@@ -5,19 +5,448 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cantina Los Cebollitas</title>
+    <meta
+        name="description"
+        content="Cantina Los Cebollitas — comida, fútbol y pasión por el Bicho."
+    >
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <h1>Cantina Los Cebollitas</h1>
+    <!-- ========================================
+         NAVEGACIÓN
+    ========================================= -->
 
-    <p>La página está funcionando.</p>
+    <header class="site-header">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script type="module" src="js/supabase.js"></script>
-<script type="module" src="js/script.js"></script>
+        <a href="#inicio" class="logo">
+            <span class="logo-mark">LC</span>
+            <span class="logo-text">Los Cebollitas</span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navegación principal">
+            <a href="#inicio">Inicio</a>
+            <a href="#menu">Menú</a>
+            <a href="#eventos">Eventos</a>
+            <a href="#reservas">Reservas</a>
+            <a href="#nosotros">Nosotros</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ========================================
+         CONTENIDO HORIZONTAL
+    ========================================= -->
+
+    <main class="horizontal-scroll" id="contenido">
+
+
+        <!-- ====================================
+             INICIO
+        ===================================== -->
+
+        <section id="inicio" class="panel hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">CANTINA • FÚTBOL • PASIÓN</span>
+
+                <h1>
+                    Donde el fútbol
+                    <span>se vive distinto.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Comida casera, amigos, partidos y toda la pasión
+                    del Bicho en un solo lugar.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#menu" class="btn btn-primary">
+                        Ver menú
+                    </a>
+
+                    <a href="#reservas" class="btn btn-secondary">
+                        Reservar mesa
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="hero-card">
+
+                    <span class="hero-card-label">
+                        HOY EN LA CANTINA
+                    </span>
+
+                    <strong>
+                        Comé.<br>
+                        Mirá.<br>
+                        Festejá.
+                    </strong>
+
+                    <span class="hero-card-ball">⚽</span>
+
+                </div>
+
+                <div class="floating-tag tag-one">
+                    🍔 Casero
+                </div>
+
+                <div class="floating-tag tag-two">
+                    ⚽ Día de partido
+                </div>
+
+            </div>
+
+
+            <a href="#menu" class="scroll-hint">
+                <span>Explorá</span>
+                <span class="scroll-arrow">→</span>
+            </a>
+
+        </section>
+
+
+        <!-- ====================================
+             MENÚ
+        ===================================== -->
+
+        <section id="menu" class="panel menu-section">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">PARA COMER COMO EN CASA</span>
+
+                <h2>
+                    Nuestro <span>menú.</span>
+                </h2>
+
+                <p>
+                    Platos abundantes, sabores de siempre y ese toque
+                    de cantina que no se puede explicar.
+                </p>
+
+            </div>
+
+
+            <div class="menu-grid">
+
+                <article class="menu-card menu-card-featured">
+                    <span class="menu-number">01</span>
+
+                    <div>
+                        <span class="menu-icon">🍔</span>
+                        <h3>Hamburguesas</h3>
+                        <p>
+                            Opciones caseras para arrancar el partido
+                            con todo.
+                        </p>
+                    </div>
+
+                    <span class="menu-link">Ver opciones →</span>
+                </article>
+
+
+                <article class="menu-card">
+                    <span class="menu-number">02</span>
+
+                    <div>
+                        <span class="menu-icon">🍕</span>
+                        <h3>Pizzas</h3>
+                        <p>
+                            Para compartir, discutir el partido
+                            y pedir otra ronda.
+                        </p>
+                    </div>
+
+                    <span class="menu-link">Ver opciones →</span>
+                </article>
+
+
+                <article class="menu-card">
+                    <span class="menu-number">03</span>
+
+                    <div>
+                        <span class="menu-icon">🍟</span>
+                        <h3>Para picar</h3>
+                        <p>
+                            La previa perfecta para cualquier
+                            encuentro.
+                        </p>
+                    </div>
+
+                    <span class="menu-link">Ver opciones →</span>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             EVENTOS
+        ===================================== -->
+
+        <section id="eventos" class="panel eventos-section">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">SIEMPRE HAY ALGO PASANDO</span>
+
+                <h2>
+                    Viví el partido <span>acá.</span>
+                </h2>
+
+                <p>
+                    Enterate de los próximos eventos y vení a vivir
+                    cada partido junto al Bicho.
+                </p>
+
+            </div>
+
+
+            <aside
+                id="eventoDestacado"
+                class="evento-destacado"
+                aria-hidden="false"
+            >
+
+                <div class="evento-fondo"></div>
+
+                <div class="evento-contenido">
+
+                    <button
+                        type="button"
+                        id="cerrarEvento"
+                        class="evento-cerrar"
+                        aria-label="Cerrar evento"
+                    >
+                        ×
+                    </button>
+
+                    <span class="evento-etiqueta">
+                        ⚽ EVENTO ESPECIAL
+                    </span>
+
+                    <h3 id="eventoTitulo">
+                        ¡DÍA DE PARTIDO!
+                    </h3>
+
+                    <p id="eventoDescripcion">
+                        Viví el partido junto al Bicho.
+                    </p>
+
+                    <div class="evento-datos">
+
+                        <span id="eventoFecha">
+                            📅 Próximamente
+                        </span>
+
+                        <span id="eventoHora">
+                            🕐 Horario a confirmar
+                        </span>
+
+                    </div>
+
+                    <a
+                        id="eventoBoton"
+                        href="#reservas"
+                        class="btn btn-primary"
+                    >
+                        RESERVAR MESA
+                    </a>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+
+        <!-- ====================================
+             RESERVAS
+        ===================================== -->
+
+        <section id="reservas" class="panel reservas-section">
+
+            <div class="reservation-layout">
+
+                <div class="section-heading">
+
+                    <span class="eyebrow">TU MESA TE ESPERA</span>
+
+                    <h2>
+                        Reservá y vení a
+                        <span>disfrutar.</span>
+                    </h2>
+
+                    <p>
+                        Elegí tu día, armá el plan y nosotros
+                        nos encargamos del resto.
+                    </p>
+
+                </div>
+
+
+                <div class="reservation-card">
+
+                    <div class="reservation-card-top">
+                        <span>RESERVAS</span>
+                        <span class="status-dot">●</span>
+                    </div>
+
+                    <h3>
+                        ¿Venís a comer?
+                    </h3>
+
+                    <p>
+                        Hacé tu reserva de forma rápida
+                        y asegurá tu lugar.
+                    </p>
+
+                    <a href="#" class="btn btn-primary">
+                        Reservar mesa
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             NOSOTROS
+        ===================================== -->
+
+        <section id="nosotros" class="panel nosotros-section">
+
+            <div class="nosotros-content">
+
+                <span class="eyebrow">MÁS QUE UNA CANTINA</span>
+
+                <h2>
+                    Acá se viene a
+                    <span>sentir.</span>
+                </h2>
+
+                <p>
+                    Los Cebollitas nació para juntar alrededor de una
+                    mesa lo que más nos gusta: buena comida, amigos
+                    y fútbol.
+                </p>
+
+                <p>
+                    Un lugar para venir antes del partido, quedarse
+                    después y hacer de cada fecha un recuerdo.
+                </p>
+
+                <a href="#reservas" class="text-link">
+                    Vení a conocernos →
+                </a>
+
+            </div>
+
+
+            <div class="nosotros-visual">
+
+                <div class="visual-circle">
+                    <span>⚽</span>
+                </div>
+
+                <div class="visual-text">
+                    <strong>LOS CEBOLLITAS</strong>
+                    <span>DESDE LA CANTINA</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             FOOTER
+        ===================================== -->
+
+        <footer class="panel footer-panel">
+
+            <div class="footer-main">
+
+                <div>
+
+                    <span class="eyebrow">CANTINA LOS CEBOLLITAS</span>
+
+                    <h2>
+                        Nos vemos
+                        <span>en la cantina.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="footer-info">
+
+                    <div>
+                        <span>UBICACIÓN</span>
+                        <strong>Buenos Aires, Argentina</strong>
+                    </div>
+
+                    <div>
+                        <span>HORARIOS</span>
+                        <strong>Consultá nuestras redes</strong>
+                    </div>
+
+                    <div>
+                        <span>SEGUINOS</span>
+                        <strong>Instagram · WhatsApp</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Cantina Los Cebollitas
+                </span>
+
+                <span>
+                    Hecho con pasión por el Bicho ⚽
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ========================================
+         SCRIPTS
+    ========================================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <script
+        type="module"
+        src="js/supabase.js"
+    ></script>
+
+    <script
+        type="module"
+        src="js/script.js"
+    ></script>
 
 </body>
 </html>
