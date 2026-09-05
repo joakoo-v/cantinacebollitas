@@ -43,16 +43,42 @@ function mostrarPanel(usuario) {
 }
 
 // ========================================
+// COMPROBAR SI ES ADMINISTRADOR
+// ========================================
+
+async function esAdministrador() {
+
+    const { data, error } =
+        await supabaseClient.rpc("es_administrador");
+
+    if (error) {
+        console.error(
+            "Error al comprobar administrador:",
+            error
+        );
+
+        return false;
+    }
+
+    return data === true;
+}
+
+// ========================================
 // INICIAR SESIÓN
 // ========================================
 
 formLogin.addEventListener("submit", async (event) => {
+
     event.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    const email =
+        document.getElementById("email").value.trim();
 
-    mensajeLogin.textContent = "Iniciando sesión...";
+    const password =
+        document.getElementById("password").value;
+
+    mensajeLogin.textContent =
+        "Iniciando sesión...";
 
     const { data, error } =
         await supabaseClient.auth.signInWithPassword({
@@ -61,10 +87,28 @@ formLogin.addEventListener("submit", async (event) => {
         });
 
     if (error) {
-        console.error("Error al iniciar sesión:", error);
+
+        console.error(
+            "Error al iniciar sesión:",
+            error
+        );
 
         mensajeLogin.textContent =
             "Correo o contraseña incorrectos.";
+
+        return;
+    }
+
+    // Comprobar permisos de administrador
+    const administrador =
+        await esAdministrador();
+
+    if (!administrador) {
+
+        await supabaseClient.auth.signOut();
+
+        mensajeLogin.textContent =
+            "No tenés permisos de administrador.";
 
         return;
     }
@@ -82,7 +126,12 @@ btnCerrarSesion.addEventListener("click", async () => {
         await supabaseClient.auth.signOut();
 
     if (error) {
-        console.error("Error al cerrar sesión:", error);
+
+        console.error(
+            "Error al cerrar sesión:",
+            error
+        );
+
         return;
     }
 
@@ -100,18 +149,40 @@ async function comprobarSesion() {
         await supabaseClient.auth.getSession();
 
     if (error) {
+
         console.error(
             "Error al comprobar sesión:",
             error
         );
 
         mostrarLogin();
+
         return;
     }
 
     if (data.session?.user) {
-        mostrarPanel(data.session.user);
+
+        const administrador =
+            await esAdministrador();
+
+        if (administrador) {
+
+            mostrarPanel(
+                data.session.user
+            );
+
+        } else {
+
+            await supabaseClient.auth.signOut();
+
+            mostrarLogin();
+
+            mensajeLogin.textContent =
+                "No tenés permisos de administrador.";
+        }
+
     } else {
+
         mostrarLogin();
     }
 }
@@ -123,9 +194,7 @@ async function comprobarSesion() {
 supabaseClient.auth.onAuthStateChange(
     (event, session) => {
 
-        if (session?.user) {
-            mostrarPanel(session.user);
-        } else {
+        if (!session?.user) {
             mostrarLogin();
         }
     }
