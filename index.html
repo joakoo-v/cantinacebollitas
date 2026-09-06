@@ -1,369 +1,136 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cantina Los Cebollitas</title>
     <meta
-        name="description"
-        content="Cantina Los Cebollitas — comida, fútbol y pasión por el Bicho."
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="Cantina Los Cebollitas - Sabor, pasión y tradición."
+    >
+
+    <title>Cantina Los Cebollitas</title>
+
+    <!-- ESTILOS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 
 <body>
 
     <!-- ========================================
-         NAVEGACIÓN
+         HEADER / NAVEGACIÓN
     ========================================= -->
 
-    <header class="site-header">
+    <header class="header">
 
         <a href="#inicio" class="logo">
-            <span class="logo-mark">LC</span>
-            <span class="logo-text">Los Cebollitas</span>
+            <span class="logo-principal">CANTINA</span>
+            <span class="logo-secundario">LOS CEBOLLITAS</span>
         </a>
 
-        <nav class="main-nav" aria-label="Navegación principal">
+
+        <nav class="nav" id="nav">
+
             <a href="#inicio">Inicio</a>
+
             <a href="#menu">Menú</a>
+
             <a href="#eventos">Eventos</a>
-            <a href="#reservas">Reservas</a>
-            <a href="#nosotros">Nosotros</a>
+
+            <a href="#resenas">Reseñas</a>
+
+            <a href="#informacion">Información</a>
+
         </nav>
+
+
+        <button
+            class="menu-mobile"
+            id="menuMobile"
+            type="button"
+            aria-label="Abrir menú"
+        >
+            ☰
+        </button>
 
     </header>
 
 
     <!-- ========================================
-         CONTENIDO HORIZONTAL
+         INICIO / HERO
     ========================================= -->
 
-    <main class="horizontal-scroll" id="contenido">
+    <main>
 
+        <section
+            class="hero"
+            id="inicio"
+        >
 
-        <!-- ====================================
-             INICIO
-        ===================================== -->
+            <div class="hero-fondo"></div>
 
-        <section id="inicio" class="panel hero">
+            <div class="hero-contenido">
 
-            <div class="hero-content">
-
-                <span class="eyebrow">CANTINA • FÚTBOL • PASIÓN</span>
+                <p class="hero-etiqueta">
+                    ARGENTINOS JUNIORS · LA PATERNAL
+                </p>
 
                 <h1>
-                    Donde el fútbol
-                    <span>se vive distinto.</span>
+                    Cantina
+                    <span>Los Cebollitas</span>
                 </h1>
 
-                <p class="hero-text">
-                    Comida casera, amigos, partidos y toda la pasión
-                    del Bicho en un solo lugar.
+                <p class="hero-descripcion">
+                    La pasión del Bicho también se disfruta
+                    alrededor de la mesa.
                 </p>
 
-                <div class="hero-actions">
-                    <a href="#menu" class="btn btn-primary">
-                        Ver menú
-                    </a>
-
-                    <a href="#reservas" class="btn btn-secondary">
-                        Reservar mesa
-                    </a>
-                </div>
-
-            </div>
-
-
-            <div class="hero-visual">
-
-                <div class="hero-card">
-
-                    <span class="hero-card-label">
-                        HOY EN LA CANTINA
-                    </span>
-
-                    <strong>
-                        Comé.<br>
-                        Mirá.<br>
-                        Festejá.
-                    </strong>
-
-                    <span class="hero-card-ball">⚽</span>
-
-                </div>
-
-                <div class="floating-tag tag-one">
-                    🍔 Casero
-                </div>
-
-                <div class="floating-tag tag-two">
-                    ⚽ Día de partido
-                </div>
-
-            </div>
-
-
-            <a href="#menu" class="scroll-hint">
-                <span>Explorá</span>
-                <span class="scroll-arrow">→</span>
-            </a>
-
-        </section>
-
-
-        <!-- ====================================
-             MENÚ
-        ===================================== -->
-
-        <section id="menu" class="panel menu-section">
-
-            <div class="section-heading">
-
-                <span class="eyebrow">PARA COMER COMO EN CASA</span>
-
-                <h2>
-                    Nuestro <span>menú.</span>
-                </h2>
-
-                <p>
-                    Platos abundantes, sabores de siempre y ese toque
-                    de cantina que no se puede explicar.
-                </p>
-
-            </div>
-
-
-            <div class="menu-grid">
-
-                <article class="menu-card menu-card-featured">
-                    <span class="menu-number">01</span>
-
-                    <div>
-                        <span class="menu-icon">🍔</span>
-                        <h3>Hamburguesas</h3>
-                        <p>
-                            Opciones caseras para arrancar el partido
-                            con todo.
-                        </p>
-                    </div>
-
-                    <span class="menu-link">Ver opciones →</span>
-                </article>
-
-
-                <article class="menu-card">
-                    <span class="menu-number">02</span>
-
-                    <div>
-                        <span class="menu-icon">🍕</span>
-                        <h3>Pizzas</h3>
-                        <p>
-                            Para compartir, discutir el partido
-                            y pedir otra ronda.
-                        </p>
-                    </div>
-
-                    <span class="menu-link">Ver opciones →</span>
-                </article>
-
-
-                <article class="menu-card">
-                    <span class="menu-number">03</span>
-
-                    <div>
-                        <span class="menu-icon">🍟</span>
-                        <h3>Para picar</h3>
-                        <p>
-                            La previa perfecta para cualquier
-                            encuentro.
-                        </p>
-                    </div>
-
-                    <span class="menu-link">Ver opciones →</span>
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ====================================
-             EVENTOS
-        ===================================== -->
-
-        <section id="eventos" class="panel eventos-section">
-
-            <div class="section-heading">
-
-                <span class="eyebrow">SIEMPRE HAY ALGO PASANDO</span>
-
-                <h2>
-                    Viví el partido <span>acá.</span>
-                </h2>
-
-                <p>
-                    Enterate de los próximos eventos y vení a vivir
-                    cada partido junto al Bicho.
-                </p>
-
-            </div>
-
-
-            <aside
-                id="eventoDestacado"
-                class="evento-destacado"
-                aria-hidden="false"
-            >
-
-                <div class="evento-fondo"></div>
-
-                <div class="evento-contenido">
-
-                    <button
-                        type="button"
-                        id="cerrarEvento"
-                        class="evento-cerrar"
-                        aria-label="Cerrar evento"
-                    >
-                        ×
-                    </button>
-
-                    <span class="evento-etiqueta">
-                        ⚽ EVENTO ESPECIAL
-                    </span>
-
-                    <h3 id="eventoTitulo">
-                        ¡DÍA DE PARTIDO!
-                    </h3>
-
-                    <p id="eventoDescripcion">
-                        Viví el partido junto al Bicho.
-                    </p>
-
-                    <div class="evento-datos">
-
-                        <span id="eventoFecha">
-                            📅 Próximamente
-                        </span>
-
-                        <span id="eventoHora">
-                            🕐 Horario a confirmar
-                        </span>
-
-                    </div>
-
-                    <a
-                        id="eventoBoton"
-                        href="#reservas"
-                        class="btn btn-primary"
-                    >
-                        RESERVAR MESA
-                    </a>
-
-                </div>
-
-            </aside>
-
-        </section>
-
-
-        <!-- ====================================
-             RESERVAS
-        ===================================== -->
-
-        <section id="reservas" class="panel reservas-section">
-
-            <div class="reservation-layout">
-
-                <div class="section-heading">
-
-                    <span class="eyebrow">TU MESA TE ESPERA</span>
-
-                    <h2>
-                        Reservá y vení a
-                        <span>disfrutar.</span>
-                    </h2>
-
-                    <p>
-                        Elegí tu día, armá el plan y nosotros
-                        nos encargamos del resto.
-                    </p>
-
-                </div>
-
-
-                <div class="reservation-card">
-
-                    <div class="reservation-card-top">
-                        <span>RESERVAS</span>
-                        <span class="status-dot">●</span>
-                    </div>
-
-                    <h3>
-                        ¿Venís a comer?
-                    </h3>
-
-                    <p>
-                        Hacé tu reserva de forma rápida
-                        y asegurá tu lugar.
-                    </p>
-
-                    <a href="#" class="btn btn-primary">
-                        Reservar mesa
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ====================================
-             NOSOTROS
-        ===================================== -->
-
-        <section id="nosotros" class="panel nosotros-section">
-
-            <div class="nosotros-content">
-
-                <span class="eyebrow">MÁS QUE UNA CANTINA</span>
-
-                <h2>
-                    Acá se viene a
-                    <span>sentir.</span>
-                </h2>
-
-                <p>
-                    Los Cebollitas nació para juntar alrededor de una
-                    mesa lo que más nos gusta: buena comida, amigos
-                    y fútbol.
-                </p>
-
-                <p>
-                    Un lugar para venir antes del partido, quedarse
-                    después y hacer de cada fecha un recuerdo.
-                </p>
-
-                <a href="#reservas" class="text-link">
-                    Vení a conocernos →
+                <a
+                    href="#menu"
+                    class="boton boton-principal"
+                >
+                    VER EL MENÚ
                 </a>
 
             </div>
 
+        </section>
 
-            <div class="nosotros-visual">
 
-                <div class="visual-circle">
-                    <span>⚽</span>
+        <!-- ========================================
+             ESTADO / HORARIOS
+        ========================================= -->
+
+        <section class="estado-wrapper">
+
+            <div class="estado-card">
+
+                <div class="estado-indicador">
+                    <span class="estado-punto"></span>
+
+                    <span class="estado-texto">
+                        ABIERTO AHORA
+                    </span>
                 </div>
 
-                <div class="visual-text">
-                    <strong>LOS CEBOLLITAS</strong>
-                    <span>DESDE LA CANTINA</span>
+
+                <div class="estado-horario">
+
+                    <span class="estado-icono">
+                        🕒
+                    </span>
+
+                    <p>
+                        Hoy atendemos hasta las
+                        <strong>22:00 hs</strong>
+                    </p>
+
                 </div>
 
             </div>
@@ -371,82 +138,471 @@
         </section>
 
 
-        <!-- ====================================
-             FOOTER
-        ===================================== -->
+        <!-- ========================================
+             SOBRE LA CANTINA
+        ========================================= -->
 
-        <footer class="panel footer-panel">
+        <section
+            class="seccion sobre"
+            id="sobre"
+        >
 
-            <div class="footer-main">
+            <div class="sobre-imagen">
 
-                <div>
+                <div class="imagen-placeholder">
 
-                    <span class="eyebrow">CANTINA LOS CEBOLLITAS</span>
+                    <span>FOTO DE LA CANTINA</span>
 
-                    <h2>
-                        Nos vemos
-                        <span>en la cantina.</span>
-                    </h2>
-
-                </div>
-
-
-                <div class="footer-info">
-
-                    <div>
-                        <span>UBICACIÓN</span>
-                        <strong>Buenos Aires, Argentina</strong>
-                    </div>
-
-                    <div>
-                        <span>HORARIOS</span>
-                        <strong>Consultá nuestras redes</strong>
-                    </div>
-
-                    <div>
-                        <span>SEGUINOS</span>
-                        <strong>Instagram · WhatsApp</strong>
-                    </div>
+                    <small>
+                        Próximamente
+                    </small>
 
                 </div>
 
             </div>
 
 
-            <div class="footer-bottom">
+            <div class="sobre-contenido">
 
-                <span>
-                    © 2026 Cantina Los Cebollitas
-                </span>
+                <p class="seccion-etiqueta">
+                    NUESTRA HISTORIA
+                </p>
 
-                <span>
-                    Hecho con pasión por el Bicho ⚽
-                </span>
+                <h2>
+                    Mucho más que una
+                    <span>cantina</span>
+                </h2>
+
+                <p>
+                    Un espacio para disfrutar,
+                    compartir y vivir la pasión
+                    que une a generaciones.
+                </p>
+
+                <p>
+                    Cantina Los Cebollitas es un lugar
+                    pensado para sentirse como en casa,
+                    rodeados de historia, fútbol y buena comida.
+                </p>
 
             </div>
 
-        </footer>
+        </section>
+
+
+        <!-- ========================================
+             MENÚ
+        ========================================= -->
+
+        <section
+            class="seccion menu"
+            id="menu"
+        >
+
+            <div class="seccion-encabezado">
+
+                <p class="seccion-etiqueta">
+                    GASTRONOMÍA
+                </p>
+
+                <h2>
+                    Nuestro
+                    <span>menú</span>
+                </h2>
+
+                <p>
+                    Elegí una categoría y descubrí
+                    todo lo que tenemos para vos.
+                </p>
+
+            </div>
+
+
+            <!-- CATEGORÍAS DINÁMICAS -->
+
+            <div
+                class="categorias-grid"
+                id="categorias"
+            >
+
+                <!--
+                    Las categorías se cargarán
+                    desde Supabase con JavaScript.
+                -->
+
+            </div>
+
+
+            <!-- PRODUCTOS DE LA CATEGORÍA -->
+
+            <div
+                class="productos-contenedor"
+                id="productos"
+            >
+
+                <p class="menu-mensaje">
+                    Elegí una categoría para ver
+                    nuestros productos.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             EVENTOS
+        ========================================= -->
+
+        <section
+            class="seccion eventos"
+            id="eventos"
+        >
+
+            <div class="seccion-encabezado">
+
+                <p class="seccion-etiqueta">
+                    MOMENTOS ESPECIALES
+                </p>
+
+                <h2>
+                    Próximos
+                    <span>eventos</span>
+                </h2>
+
+                <p>
+                    Viví partidos, encuentros y momentos
+                    especiales junto a nosotros.
+                </p>
+
+            </div>
+
+
+            <div
+                class="eventos-contenedor"
+                id="listaEventos"
+            >
+
+                <p class="cargando">
+                    Próximamente tendremos novedades.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             RESEÑAS
+        ========================================= -->
+
+        <section
+            class="seccion resenas"
+            id="resenas"
+        >
+
+            <div class="seccion-encabezado">
+
+                <p class="seccion-etiqueta">
+                    EXPERIENCIAS
+                </p>
+
+                <h2>
+                    Lo que dicen
+                    <span>de nosotros</span>
+                </h2>
+
+            </div>
+
+
+            <div class="resenas-grid">
+
+                <!-- RESEÑA 1 -->
+
+                <article class="resena-card">
+
+                    <div class="resena-estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        “Muy buena atención y un ambiente
+                        hermoso para compartir.”
+                    </p>
+
+                    <span>
+                        — Cliente
+                    </span>
+
+                </article>
+
+
+                <!-- RESEÑA 2 -->
+
+                <article class="resena-card">
+
+                    <div class="resena-estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        “Un lugar increíble para disfrutar
+                        antes o después de un partido.”
+                    </p>
+
+                    <span>
+                        — Cliente
+                    </span>
+
+                </article>
+
+
+                <!-- RESEÑA 3 -->
+
+                <article class="resena-card">
+
+                    <div class="resena-estrellas">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        “Excelente comida, atención y un
+                        ambiente lleno de historia.”
+                    </p>
+
+                    <span>
+                        — Cliente
+                    </span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             INFORMACIÓN
+        ========================================= -->
+
+        <section
+            class="seccion informacion"
+            id="informacion"
+        >
+
+            <div class="seccion-encabezado">
+
+                <p class="seccion-etiqueta">
+                    VENÍ A CONOCERNOS
+                </p>
+
+                <h2>
+                    Información de la
+                    <span>cantina</span>
+                </h2>
+
+            </div>
+
+
+            <div class="informacion-grid">
+
+
+                <article class="info-card">
+
+                    <span class="info-icono">
+                        📍
+                    </span>
+
+                    <h3>Ubicación</h3>
+
+                    <p>
+                        La Paternal, Buenos Aires
+                    </p>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <span class="info-icono">
+                        🕒
+                    </span>
+
+                    <h3>Horarios</h3>
+
+                    <p>
+                        Consultá nuestros horarios
+                        actualizados.
+                    </p>
+
+                </article>
+
+
+                <article class="info-card">
+
+                    <span class="info-icono">
+                        📱
+                    </span>
+
+                    <h3>Contacto</h3>
+
+                    <p>
+                        Comunicate con nosotros
+                        por WhatsApp.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             REDES DE ARGENTINOS JUNIORS
+        ========================================= -->
+
+        <section class="redes-club">
+
+            <div class="redes-club-contenido">
+
+                <p class="seccion-etiqueta">
+                    CONECTADOS CON EL BICHO
+                </p>
+
+                <h2>
+                    Seguinos y conocé más de
+                    <span>Argentinos Juniors</span>
+                </h2>
+
+                <div class="redes-links">
+
+                    <a
+                        href="#"
+                        aria-label="Instagram Argentinos Juniors"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="Facebook Argentinos Juniors"
+                    >
+                        Facebook
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="X Argentinos Juniors"
+                    >
+                        X
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="YouTube Argentinos Juniors"
+                    >
+                        YouTube
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
 
     </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-principal">
+
+            <div class="footer-marca">
+
+                <a href="#inicio" class="logo">
+
+                    <span class="logo-principal">
+                        CANTINA
+                    </span>
+
+                    <span class="logo-secundario">
+                        LOS CEBOLLITAS
+                    </span>
+
+                </a>
+
+                <p>
+                    Sabor, tradición y pasión
+                    alrededor de la mesa.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>Navegación</h3>
+
+                <a href="#inicio">Inicio</a>
+                <a href="#menu">Menú</a>
+                <a href="#eventos">Eventos</a>
+                <a href="#informacion">Información</a>
+
+            </div>
+
+
+            <div class="footer-contacto">
+
+                <h3>Contacto</h3>
+
+                <p>La Paternal, Buenos Aires</p>
+
+                <a href="#">
+                    WhatsApp
+                </a>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-inferior">
+
+            <p>
+                © <span id="anioActual"></span>
+                Cantina Los Cebollitas.
+                Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
 
 
     <!-- ========================================
          SCRIPTS
     ========================================= -->
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-    ></script>
+    <!-- Librería de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script
-        type="module"
-        src="js/supabase.js"
-    ></script>
+    <!-- Conexión -->
+    <script type="module" src="js/supabase.js"></script>
 
-    <script
-        type="module"
-        src="js/script.js"
-    ></script>
+    <!-- Página pública -->
+    <script type="module" src="js/script.js"></script>
 
 </body>
+
 </html>
