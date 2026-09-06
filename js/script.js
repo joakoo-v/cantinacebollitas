@@ -1,5 +1,6 @@
+```js
 // ========================================
-// PÁGINA PÚBLICA
+// PÁGINA PÚBLICA — LOS CEBOLLITAS
 // ========================================
 
 console.log("Página pública cargada correctamente.");
@@ -10,23 +11,43 @@ console.log("Página pública cargada correctamente.");
 // ========================================
 
 const contenedor = document.getElementById("contenido");
-
 const secciones = document.querySelectorAll(".panel");
-
 const enlacesNav = document.querySelectorAll(".main-nav a");
 
 
 // ========================================
-// NAVEGACIÓN HORIZONTAL
+// NAVEGACIÓN
 // ========================================
 
-enlacesNav.forEach((enlace) => {
+function irASeccion(destino) {
+    if (!destino || !destino.startsWith("#")) {
+        return;
+    }
+
+    const seccion = document.querySelector(destino);
+
+    if (!seccion) {
+        return;
+    }
+
+    seccion.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start"
+    });
+
+    history.replaceState(null, "", destino);
+}
+
+
+document.querySelectorAll('a[href^="#"]').forEach((enlace) => {
 
     enlace.addEventListener("click", (event) => {
 
         const destino = enlace.getAttribute("href");
 
-        if (!destino || !destino.startsWith("#")) {
+        if (!destino || destino === "#") {
+            event.preventDefault();
             return;
         }
 
@@ -38,113 +59,110 @@ enlacesNav.forEach((enlace) => {
 
         event.preventDefault();
 
-        seccion.scrollIntoView({
-            behavior: "smooth",
-            inline: "start",
-            block: "nearest"
-        });
+        irASeccion(destino);
 
-        history.replaceState(null, "", destino);
     });
 
 });
 
 
 // ========================================
-// SECCIÓN ACTIVA
+// SECCIÓN ACTIVA EN LA NAV
 // ========================================
 
-const observadorSecciones = new IntersectionObserver(
-    (entradas) => {
+if (contenedor && secciones.length && enlacesNav.length) {
 
-        entradas.forEach((entrada) => {
+    const observadorSecciones = new IntersectionObserver(
+        (entradas) => {
 
-            if (!entrada.isIntersecting) {
-                return;
-            }
+            entradas.forEach((entrada) => {
 
-            const id = entrada.target.id;
+                if (!entrada.isIntersecting) {
+                    return;
+                }
 
-            enlacesNav.forEach((enlace) => {
+                const id = entrada.target.id;
 
-                const activo =
-                    enlace.getAttribute("href") === `#${id}`;
+                enlacesNav.forEach((enlace) => {
 
-                enlace.classList.toggle(
-                    "activo",
-                    activo
+                    const activo =
+                        enlace.getAttribute("href") === `#${id}`;
+
+                    enlace.classList.toggle("activo", activo);
+
+                });
+
+            });
+
+        },
+        {
+            root: contenedor,
+            threshold: 0.55
+        }
+    );
+
+
+    secciones.forEach((seccion) => {
+        observadorSecciones.observe(seccion);
+    });
+
+}
+
+
+// ========================================
+// ANIMACIONES DE ENTRADA
+// ========================================
+
+const elementosAnimados = document.querySelectorAll(
+    ".section-heading, " +
+    ".menu-card, " +
+    ".evento-destacado, " +
+    ".reservation-card, " +
+    ".nosotros-content, " +
+    ".nosotros-visual, " +
+    ".footer-main"
+);
+
+
+if (elementosAnimados.length) {
+
+    elementosAnimados.forEach((elemento) => {
+
+        elemento.classList.add("animar-entrada");
+
+    });
+
+
+    const observadorAnimaciones = new IntersectionObserver(
+        (entradas) => {
+
+            entradas.forEach((entrada) => {
+
+                if (!entrada.isIntersecting) {
+                    return;
+                }
+
+                entrada.target.classList.add("visible");
+
+                observadorAnimaciones.unobserve(
+                    entrada.target
                 );
 
             });
 
-        });
-
-    },
-    {
-        root: contenedor,
-        threshold: 0.65
-    }
-);
+        },
+        {
+            root: contenedor,
+            threshold: 0.12
+        }
+    );
 
 
-secciones.forEach((seccion) => {
-    observadorSecciones.observe(seccion);
-});
+    elementosAnimados.forEach((elemento) => {
+        observadorAnimaciones.observe(elemento);
+    });
 
-
-// ========================================
-// ANIMACIÓN DE ELEMENTOS
-// ========================================
-
-const elementosAnimados = document.querySelectorAll(
-    ".section-heading, .menu-card, .evento-destacado, .reservation-card, .nosotros-content, .nosotros-visual, .footer-main"
-);
-
-
-elementosAnimados.forEach((elemento) => {
-
-    elemento.style.opacity = "0";
-
-    elemento.style.transform =
-        "translateY(30px)";
-
-    elemento.style.transition =
-        "opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1)";
-
-});
-
-
-const observadorAnimaciones = new IntersectionObserver(
-    (entradas) => {
-
-        entradas.forEach((entrada) => {
-
-            if (!entrada.isIntersecting) {
-                return;
-            }
-
-            entrada.target.style.opacity = "1";
-
-            entrada.target.style.transform =
-                "translateY(0)";
-
-            observadorAnimaciones.unobserve(
-                entrada.target
-            );
-
-        });
-
-    },
-    {
-        root: contenedor,
-        threshold: 0.15
-    }
-);
-
-
-elementosAnimados.forEach((elemento) => {
-    observadorAnimaciones.observe(elemento);
-});
+}
 
 
 // ========================================
@@ -160,37 +178,32 @@ const eventoDestacado =
 
 if (botonCerrarEvento && eventoDestacado) {
 
-    botonCerrarEvento.addEventListener(
-        "click",
-        () => {
+    botonCerrarEvento.addEventListener("click", () => {
 
-            eventoDestacado.style.opacity = "0";
+        eventoDestacado.classList.add("cerrando");
 
-            eventoDestacado.style.transform =
-                "translateY(-10px) scale(.98)";
+        eventoDestacado.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
-            eventoDestacado.style.pointerEvents =
-                "none";
+        setTimeout(() => {
 
-            eventoDestacado.setAttribute(
-                "aria-hidden",
-                "true"
-            );
+            eventoDestacado.style.display = "none";
 
-        }
-    );
+        }, 500);
+
+    });
 
 }
 
 
 // ========================================
-// EFECTO PARALLAX SUAVE EN HERO
+// PARALLAX DEL HERO
 // ========================================
 
 const hero = document.getElementById("inicio");
-
-const heroVisual =
-    document.querySelector(".hero-visual");
+const heroVisual = document.querySelector(".hero-visual");
 
 
 if (
@@ -199,49 +212,138 @@ if (
     window.matchMedia("(min-width: 651px)").matches
 ) {
 
-    hero.addEventListener(
-        "mousemove",
+    hero.addEventListener("mousemove", (event) => {
+
+        const rect = hero.getBoundingClientRect();
+
+        const x =
+            (event.clientX - rect.left) /
+            rect.width;
+
+        const y =
+            (event.clientY - rect.top) /
+            rect.height;
+
+        const movimientoX =
+            (x - 0.5) * 12;
+
+        const movimientoY =
+            (y - 0.5) * 12;
+
+        heroVisual.style.transform =
+            `translate(${movimientoX}px, ${movimientoY}px)`;
+
+    });
+
+
+    hero.addEventListener("mouseleave", () => {
+
+        heroVisual.style.transform =
+            "translate(0, 0)";
+
+    });
+
+}
+
+
+// ========================================
+// SOPORTE PARA EL SCROLL HORIZONTAL
+// ========================================
+
+if (contenedor) {
+
+    let desplazando = false;
+
+    contenedor.addEventListener(
+        "wheel",
         (event) => {
 
-            const rect =
-                hero.getBoundingClientRect();
+            // En pantallas grandes convertimos
+            // la rueda vertical en desplazamiento horizontal.
+            if (
+                window.matchMedia("(min-width: 901px)").matches &&
+                Math.abs(event.deltaY) > Math.abs(event.deltaX)
+            ) {
 
-            const x =
-                (event.clientX - rect.left) /
-                rect.width;
+                event.preventDefault();
 
-            const y =
-                (event.clientY - rect.top) /
-                rect.height;
+                if (desplazando) {
+                    return;
+                }
 
-            const movimientoX =
-                (x - 0.5) * 14;
+                desplazando = true;
 
-            const movimientoY =
-                (y - 0.5) * 14;
+                contenedor.scrollBy({
+                    left: event.deltaY,
+                    behavior: "smooth"
+                });
 
-            heroVisual.style.transform =
-                `translate(${movimientoX}px, ${movimientoY}px)`;
-        }
-    );
+                setTimeout(() => {
+                    desplazando = false;
+                }, 350);
 
+            }
 
-    hero.addEventListener(
-        "mouseleave",
-        () => {
-
-            heroVisual.style.transform =
-                "translate(0, 0)";
-        }
+        },
+        { passive: false }
     );
 
 }
 
 
 // ========================================
-// LOG
+// BOTONES DEL MENÚ
 // ========================================
 
+document.querySelectorAll(".menu-card").forEach((tarjeta) => {
+
+    tarjeta.addEventListener("click", () => {
+
+        const titulo =
+            tarjeta.querySelector("h3")?.textContent;
+
+        if (titulo) {
+            console.log(`Categoría seleccionada: ${titulo}`);
+        }
+
+    });
+
+});
+
+
+// ========================================
+// CARGA INICIAL
+// ========================================
+
+window.addEventListener("load", () => {
+
+    const hash = window.location.hash;
+
+    if (hash) {
+
+        const seccion =
+            document.querySelector(hash);
+
+        if (seccion) {
+
+            setTimeout(() => {
+
+                seccion.scrollIntoView({
+                    behavior: "instant",
+                    block: "nearest",
+                    inline: "start"
+                });
+
+            }, 100);
+
+        }
+
+    }
+
+});
+
+
 console.log(
-    "Animaciones y navegación cargadas correctamente."
+    "Navegación, animaciones y efectos cargados correctamente."
 );
+```
